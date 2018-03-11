@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippet Format="1.0.0" xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <Header>
+    <Title>Notify Property Changed Method</Title>
+    <Author>Christian Oertel</Author>
+    <Shortcut>npc</Shortcut>
+    <Description>This method implements the OnPropertyChanged method and binds to the event handler. It expects the following method: public void NotifyPropertyChanged([CallerMemberName] string propertyName = null)</Description>
+    <SnippetTypes>
+      <SnippetType>SurroundsWith</SnippetType>
+      <SnippetType>Expansion</SnippetType>
+    </SnippetTypes>
+  </Header>
+  <Snippet>
+    <Declarations>
+      <Literal>
+        <ID>type</ID>
+        <ToolTip>Property type</ToolTip>
+        <Default>string</Default>
+      </Literal>
+      <Literal>
+        <ID>property</ID>
+        <ToolTip>Property name</ToolTip>
+        <Default>MyProperty</Default>
+      </Literal>
+    </Declarations>
+    <Code Language="CSharp">
+      <![CDATA[private $type$ _$property$;
+            public $type$ $property$
+            {
+                get { return _$property$;}
+                set 
+                { 
+                    if (value != _$property$)
+                    {
+                        _$property$ = value;
+                        NotifyPropertyChanged();
+                    }
+                }
+            }
+        $end$]]>
+    </Code>
+  </Snippet>
+</CodeSnippet>
